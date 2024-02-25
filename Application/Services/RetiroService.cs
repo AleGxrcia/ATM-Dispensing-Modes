@@ -6,7 +6,7 @@ namespace Application.Services
 {
     public class RetiroService : IRetiroService
     {
-        public string? Retirar(DispensingViewModel dispensingMode, int monto)
+        public string Retirar(DispensingViewModel dispensingMode, int monto)
         {
             string resultado;
             switch (dispensingMode.ModoDispensacion)
