@@ -1,21 +1,12 @@
-﻿using Application.Repositories;
+﻿using Application.Interfaces.Services;
 using Application.Viewmodels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public interface IRetiroService
-    {
-        string Retirar(DispensingViewModel dispensingMode, int monto);
-    }
-
     public class RetiroService : IRetiroService
     {
-        public string Retirar(DispensingViewModel dispensingMode, int monto)
+        public string? Retirar(DispensingViewModel dispensingMode, int monto)
         {
             string resultado;
             switch (dispensingMode.ModoDispensacion)

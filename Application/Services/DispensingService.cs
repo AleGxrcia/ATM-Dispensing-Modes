@@ -1,22 +1,11 @@
-﻿using Application.Repositories;
+﻿using Application.Interfaces.Services;
+using Application.Repositories;
 using Application.Viewmodels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public interface IDispensingService
-    {
-        void Change(DispensingViewModel vm);
-        DispensingViewModel GetModoDispension();
-    }
-
     public class DispensingService : IDispensingService
     {
-
         public void Change(DispensingViewModel vm)
         {
             switch (vm.ModoDispensacion) 
@@ -32,7 +21,6 @@ namespace Application.Services
                     break;
             }
         }
-
 
         public DispensingViewModel GetModoDispension()
         {
