@@ -1,0 +1,57 @@
+﻿@model Application.Viewmodels.DispensingViewModel
+
+@{
+    ViewData["Title"] = "Configuracion";
+    string info = "El modo de dispensación tiene tres opciones, sirve para configurar la forma en que el cajero dispensa el dinero.";
+}
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+{
+    <div class="alert text-center @ViewBag.TypeAlert" role="alert">
+        @ViewBag.Message
+    </div>
+}
+
+
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="card mt-4 formulario">
+            <div class="card-header bg-dark text-light fw-bold text-center">
+                Configuracion
+            </div>
+            <div class="card-body mt-2">
+                <form asp-action="DispensingChange">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-4">
+                        <label asp-for="ModoDispensacion" class="form-label fw-bold"></label>
+                            <span class="bi bi-info-circle" title="@info" data-toggle="tooltip" data-placement="top" data-bs-title="Tooltip on top"></span>
+                        <select asp-for="ModoDispensacion" class="form-select">
+                            <option value="1">De $200 y $1000</option>
+                            <option value="2">De $100 y $500</option>
+                            <option value="3">Modo Eficiente</option>
+                        </select>
+                        <span asp-validation-for="ModoDispensacion" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center mb-3">
+                        <button type="submit" class="btn btn-primary">Guardar configuracion</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+
+    </script>
+}

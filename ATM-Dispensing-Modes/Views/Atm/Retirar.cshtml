@@ -1,0 +1,46 @@
+﻿@model Application.Viewmodels.RetiroViewModel
+
+@{
+    ViewData["Title"] = "Retirar Dinero";
+}
+
+<div class="row">
+    <div class="col-6 offset-3">
+        <div class="card mt-4 formulario">
+            <div class="card-header bg-dark text-light fw-bold text-center formulario">
+                Retirar Dinero
+            </div>
+            <div class="card-body mt-2">
+                <form asp-action="Retirar">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="mb-4">
+                            <label asp-for="Monto" class="form-label fw-bold"></label>
+                            <input type="number" asp-for="Monto" class="form-control" />
+                            <span asp-validation-for="Monto" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center mb-2">
+                        <button type="submit" class="btn btn-primary">Retirar</button>
+                    </div>
+
+                </form>
+            </div>
+            @if (Model is not null && Model.Resultado != null)
+            {
+                <div class="p-3">
+                    <p class="fs-4 fw-bold">Se han retirado:</p>
+                    <p class="fs-5">
+                        @Html.Raw(Model.Resultado)
+                    </p>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
